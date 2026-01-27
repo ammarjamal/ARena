@@ -5,6 +5,21 @@ TagManager:
   serializedVersion: 3
   tags:
   - RoadUser
+  - QDSUIToggleSwitch
+  - QDSUITooltip
+  - QDSUISharedThemeColor
+  - QDSUIAccentColor
+  - QDSUIBackplateGradient
+  - QDSUIPrimaryButton
+  - QDSUITextInvertedColor
+  - QDSUITextSecondaryInvertedColor
+  - QDSUIIcon
+  - QDSUITextSecondaryColor
+  - QDSUIToggleButton
+  - QDSUIToggleBorderlessButton
+  - QDSUISection
+  - QDSUISecondaryButton
+  - Car
   layers:
   - Default
   - TransparentFX
