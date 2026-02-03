@@ -565,6 +565,11 @@ GameObject:
   m_Component:
   - component: {fileID: 627566603}
   - component: {fileID: 627566602}
+  - component: {fileID: 627566606}
+  - component: {fileID: 627566605}
+  - component: {fileID: 627566607}
+  - component: {fileID: 627566608}
+  - component: {fileID: 627566609}
   m_Layer: 0
   m_Name: Data Loggers
   m_TagString: Untagged
@@ -586,14 +591,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   leftEyeGaze: {fileID: 1477760012}
   rightEyeGaze: {fileID: 1817400588}
-  maxDistance: 35
-  startOffsetMeters: 0.12
-  widthMeters: 0.01
-  stopAtHit: 1
+  maxDistance: 25
   hitMask:
     serializedVersion: 2
     m_Bits: 8
-  drawRay: 1
+  includeTriggers: 1
+  segmentByHitChange: 1
+  minDwellSecondsToLog: 0.02
+  trialSceneName: Trial
+  folderName: Logs
+  fileName: GazeLog.csv
 --- !u!4 &627566603
 Transform:
   m_ObjectHideFlags: 0
@@ -609,6 +616,98 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &627566605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627566601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 934e1c77c1f13364ba61a10be4c52762, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BehaviourLog
+  headTransform: {fileID: 1555614730}
+  logIntervalSeconds: 0.1
+  trialSceneName: Trial
+  folderName: Logs
+  fileName: BehaviourLog.csv
+--- !u!114 &627566606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627566601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fea6eb1f00bae44aa7cdbdea103c2a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StoppingBehaviourLog
+  stopSpeedThresholdMps: 0.1
+  minStoppedSeconds: 0.2
+  trialSceneName: Trial
+  folderName: Logs
+  fileName: StoppingBehaviour.csv
+--- !u!114 &627566607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627566601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7a5bfe5a3768b24ba1d2e42dc2cfeda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSpeedTracker
+  playerRoot: {fileID: 982604116}
+  trialSceneName: Trial
+  smoothing: 0
+--- !u!114 &627566608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627566601}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62cfcbd11bf2a384cba2c02318c6b3bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  headTransform: {fileID: 1555614730}
+  stepText: {fileID: 1590113322}
+  stepAccelThreshold: 1.2
+  minStepIntervalSeconds: 0.24
+  velSmooth: 22
+  accelSmooth: 22
+  preferPlayerSpeedTracker: 1
+  maxDtForDerivatives: 0.033333335
+  showCadence: 1
+  showStepSize: 1
+--- !u!114 &627566609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627566601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d98f6007e2a651b4e8137dfb2e5f631c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StepLog
+  headTransform: {fileID: 1555614730}
+  trialSceneName: Trial
+  folderName: Logs
+  fileName: StepLog.csv
+  stepAccelThreshold: 1.2
+  minStepIntervalSeconds: 0.24
+  velSmooth: 22
+  accelSmooth: 22
+  preferPlayerSpeedTracker: 1
 --- !u!1 &886775223
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,13 +717,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 886775224}
-  m_Layer: 4
+  - component: {fileID: 886775225}
+  m_Layer: 0
   m_Name: RoadUser
   m_TagString: RoadUser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &886775224
 Transform:
   m_ObjectHideFlags: 0
@@ -640,6 +740,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 982604116}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &886775225
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886775223}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &959180890
 GameObject:
   m_ObjectHideFlags: 0
@@ -735,6 +856,14 @@ PrefabInstance:
       propertyPath: _centerEyeCamera
       value: 
       objectReference: {fileID: 1555614727}
+    - target: {fileID: 3903482225804038116, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3903482225804038116, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
+      propertyPath: m_TagString
+      value: RoadUser
+      objectReference: {fileID: 0}
     - target: {fileID: 4148778239110795873, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
       propertyPath: m_Name
       value: '[BuildingBlock] OVRInteractionComprehensive'

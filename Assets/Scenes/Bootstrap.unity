@@ -129,7 +129,6 @@ GameObject:
   m_Component:
   - component: {fileID: 510656398}
   - component: {fileID: 510656397}
-  - component: {fileID: 510656396}
   m_Layer: 0
   m_Name: Study Settings
   m_TagString: Untagged
@@ -137,20 +136,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &510656396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 510656395}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b94df1a5a647eeb4ba777bbab3b2169a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ExperimentConfigDebugUI
-  debugText: {fileID: 0}
-  refreshRate: 0.1
 --- !u!114 &510656397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,7 +213,6 @@ MonoBehaviour:
   xrSceneName: XRRig
   uiSceneName: UI
   trialSceneName: Trial
-  fadeDuration: 1
   verboseLogs: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
