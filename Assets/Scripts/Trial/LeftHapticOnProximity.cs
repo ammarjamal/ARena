@@ -4,6 +4,10 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class LeftHapticOnProximity : MonoBehaviour
 {
+    [Header("Active only for this DisplayLocation (ExperimentConfig)")]
+    public bool useDisplayLocationGate = true;
+    public DisplayLocation onlyWhenLocationIs = DisplayLocation.None;
+
     [Header("Distance (from TagDistanceService)")]
     [Min(0f)] public float triggerDistanceMeters = 10f;
 
@@ -17,6 +21,25 @@ public class LeftHapticOnProximity : MonoBehaviour
 
     private void Update()
     {
+        // Gate by experiment config display location
+        if (useDisplayLocationGate)
+        {
+            if (!ExperimentConfig.Instance) return;
+
+            if (ExperimentConfig.Instance.Location != onlyWhenLocationIs)
+            {
+                // ensure we don’t keep state “stuck” across wrong conditions
+                _wasInside = false;
+
+                if (_isVibrating)
+                {
+                    OVRInput.SetControllerVibration(0f, 0f, OVRInput.Controller.LTouch);
+                    _isVibrating = false;
+                }
+                return;
+            }
+        }
+
         var distSvc = TagDistanceService.Instance;
         if (distSvc == null) return;
 

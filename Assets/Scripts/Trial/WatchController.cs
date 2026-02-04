@@ -28,12 +28,12 @@ public class WatchController : MonoBehaviour
             return;
         }
 
-        ApplyActiveState();
+        //ApplyActiveState();
     }
 
     private void LateUpdate()
     {
-        ApplyActiveState();
+        //ApplyActiveState();
 
         if (!watchObject || !watchObject.activeSelf) return;
         if (!leftAnchor) return;
@@ -45,7 +45,7 @@ public class WatchController : MonoBehaviour
         // DO NOT touch scale
     }
 
-    private void ApplyActiveState()
+   /* private void ApplyActiveState()
     {
         bool showWatch =
             ExperimentConfig.Instance != null &&
@@ -53,5 +53,5 @@ public class WatchController : MonoBehaviour
 
         if (watchObject && watchObject.activeSelf != showWatch)
             watchObject.SetActive(showWatch);
-    }
+    }*/
 }
