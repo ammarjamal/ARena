@@ -991,7 +991,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   requiredLocation: 2
-  activateWithinMeters: 30
+  activateWithinMeters: 35
   targetRenderer: {fileID: 0}
   baseMaterial: {fileID: 2100000, guid: c441b97450f6ca64b93c75df880f3862, type: 2}
   offMaterial: {fileID: 2100000, guid: 4d876ff9d3d5a1349ae4695e9572a704, type: 2}
@@ -3094,7 +3094,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   requiredLocation: 2
-  activateWithinMeters: 30
+  activateWithinMeters: 35
   targetRenderer: {fileID: 0}
   baseMaterial: {fileID: 2100000, guid: c441b97450f6ca64b93c75df880f3862, type: 2}
   offMaterial: {fileID: 2100000, guid: 4d876ff9d3d5a1349ae4695e9572a704, type: 2}
@@ -3448,7 +3448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LightRingPulse
   requiredLocation: 1
-  activateWithinMeters: 30
+  activateWithinMeters: 35
   targetRenderer: {fileID: 0}
   baseMaterial: {fileID: 2100000, guid: f47bb022412096f489009ab3350d89cf, type: 2}
   offMaterial: {fileID: 2100000, guid: 4d876ff9d3d5a1349ae4695e9572a704, type: 2}
@@ -4176,7 +4176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   requiredLocation: 2
-  activateWithinMeters: 30
+  activateWithinMeters: 35
   targetRenderer: {fileID: 0}
   baseMaterial: {fileID: 2100000, guid: c441b97450f6ca64b93c75df880f3862, type: 2}
   offMaterial: {fileID: 2100000, guid: 4d876ff9d3d5a1349ae4695e9572a704, type: 2}
@@ -4540,7 +4540,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   requiredLocation: 2
-  activateWithinMeters: 30
+  activateWithinMeters: 35
   targetRenderer: {fileID: 0}
   baseMaterial: {fileID: 2100000, guid: c441b97450f6ca64b93c75df880f3862, type: 2}
   offMaterial: {fileID: 2100000, guid: 4d876ff9d3d5a1349ae4695e9572a704, type: 2}
@@ -4670,7 +4670,7 @@ Transform:
   m_GameObject: {fileID: 913337384}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.5, y: 1.5, z: 0}
+  m_LocalPosition: {x: 3, y: 1.5, z: 0}
   m_LocalScale: {x: 0.100000024, y: 3, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7503,7 +7503,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5802141571120916224, guid: c0bc14a02a3952d42bba379b7ffafbd0, type: 3}
       propertyPath: triggerDistanceMeters
-      value: 30.5
+      value: 35.5
       objectReference: {fileID: 0}
     - target: {fileID: 8380051344967764141, guid: c0bc14a02a3952d42bba379b7ffafbd0, type: 3}
       propertyPath: tagA
@@ -7531,7 +7531,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8380051344967764141, guid: c0bc14a02a3952d42bba379b7ffafbd0, type: 3}
       propertyPath: activateWithinMeters
-      value: 30
+      value: 35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8401,7 +8401,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   requiredLocation: 2
-  activateWithinMeters: 30
+  activateWithinMeters: 35
   targetRenderer: {fileID: 0}
   baseMaterial: {fileID: 2100000, guid: c441b97450f6ca64b93c75df880f3862, type: 2}
   offMaterial: {fileID: 2100000, guid: 4d876ff9d3d5a1349ae4695e9572a704, type: 2}
@@ -8458,7 +8458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LightRingPulse
   requiredLocation: 1
-  activateWithinMeters: 30
+  activateWithinMeters: 35
   targetRenderer: {fileID: 0}
   baseMaterial: {fileID: 2100000, guid: f47bb022412096f489009ab3350d89cf, type: 2}
   offMaterial: {fileID: 2100000, guid: 4d876ff9d3d5a1349ae4695e9572a704, type: 2}
@@ -8957,7 +8957,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   requiredLocation: 2
-  activateWithinMeters: 30
+  activateWithinMeters: 35
   targetRenderer: {fileID: 0}
   baseMaterial: {fileID: 2100000, guid: c441b97450f6ca64b93c75df880f3862, type: 2}
   offMaterial: {fileID: 2100000, guid: 4d876ff9d3d5a1349ae4695e9572a704, type: 2}
@@ -9201,7 +9201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   requiredLocation: 2
-  activateWithinMeters: 30
+  activateWithinMeters: 35
   targetRenderer: {fileID: 0}
   baseMaterial: {fileID: 2100000, guid: c441b97450f6ca64b93c75df880f3862, type: 2}
   offMaterial: {fileID: 2100000, guid: 4d876ff9d3d5a1349ae4695e9572a704, type: 2}
@@ -9969,7 +9969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LightRingPulse
   requiredLocation: 1
-  activateWithinMeters: 30
+  activateWithinMeters: 35
   targetRenderer: {fileID: 0}
   baseMaterial: {fileID: 2100000, guid: f47bb022412096f489009ab3350d89cf, type: 2}
   offMaterial: {fileID: 2100000, guid: 4d876ff9d3d5a1349ae4695e9572a704, type: 2}
@@ -10946,7 +10946,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LightRingPulse
   requiredLocation: 1
-  activateWithinMeters: 30
+  activateWithinMeters: 35
   targetRenderer: {fileID: 0}
   baseMaterial: {fileID: 2100000, guid: f47bb022412096f489009ab3350d89cf, type: 2}
   offMaterial: {fileID: 2100000, guid: 4d876ff9d3d5a1349ae4695e9572a704, type: 2}
@@ -11149,6 +11149,14 @@ PrefabInstance:
     - target: {fileID: 1052370646070797652, guid: 7b09904162669c146b705419ca449d97, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220490830754402340, guid: 7b09904162669c146b705419ca449d97, type: 3}
+      propertyPath: maxSpeedKmh
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220490830754402340, guid: 7b09904162669c146b705419ca449d97, type: 3}
+      propertyPath: maxBrakeTorque
+      value: 1250
       objectReference: {fileID: 0}
     - target: {fileID: 1220490830754402340, guid: 7b09904162669c146b705419ca449d97, type: 3}
       propertyPath: nonYieldExtraMeters

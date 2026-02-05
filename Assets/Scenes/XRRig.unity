@@ -645,7 +645,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fea6eb1f00bae44aa7cdbdea103c2a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StoppingBehaviourLog
-  stopSpeedThresholdMps: 0.1
+  headTransform: {fileID: 1555614730}
+  stopEnterThresholdMps: 0.03
+  stopExitThresholdMps: 0.06
   minStoppedSeconds: 0.2
   trialSceneName: Trial
   folderName: Logs
@@ -1441,7 +1443,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1590113321
 RectTransform:
   m_ObjectHideFlags: 0

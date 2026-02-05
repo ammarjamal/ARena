@@ -8,21 +8,26 @@ using UnityEngine.SceneManagement;
 [DisallowMultipleComponent]
 public class StoppingBehaviourLog : MonoBehaviour
 {
+    [Header("Head source")]
+    [Tooltip("Assign the player camera / CenterEyeAnchor.")]
+    public Transform headTransform;
+
     [Header("Stop detection")]
-    [Min(0f)] public float stopSpeedThresholdMps = 0.1f;
-    [Min(0f)] public float minStoppedSeconds = 0.2f;
+    [Min(0f)] public float stopEnterThresholdMps = 0.10f;
+    [Min(0f)] public float stopExitThresholdMps = 0.15f;
+    [Min(0f)] public float minStoppedSeconds = 0.20f;
 
     [Header("Trial gating")]
     [SerializeField] private string trialSceneName = "Trial";
 
     [Header("CSV output")]
     public string folderName = "Logs";
-    public string fileName = "Stopping Behaviour.csv";
+    public string fileName = "StoppingBehaviour.csv";
 
     private StreamWriter _writer;
 
-    private bool _isStopped;
-    private float _stoppedAccum;
+    private bool _inStoppedState = false;
+    private float _belowEnterAccum = 0f;
 
     private void Start()
     {
@@ -40,24 +45,37 @@ public class StoppingBehaviourLog : MonoBehaviour
             return;
         }
 
-        float speed = (PlayerSpeedTracker.Instance != null) ? PlayerSpeedTracker.Instance.SpeedMps : 0f;
+        var speedTracker = PlayerSpeedTracker.Instance;
+        if (speedTracker == null) return;
 
-        bool under = speed < stopSpeedThresholdMps;
+        float speed = speedTracker.SpeedMps;
 
-        if (under)
+        if (!_inStoppedState)
         {
-            _stoppedAccum += Time.deltaTime;
-
-            if (!_isStopped && _stoppedAccum >= minStoppedSeconds)
+            if (speed < stopEnterThresholdMps)
             {
-                _isStopped = true;
-                WriteRow(speed);
+                _belowEnterAccum += Time.deltaTime;
+
+                if (_belowEnterAccum >= minStoppedSeconds)
+                {
+                    _inStoppedState = true;
+
+                    float z = headTransform ? headTransform.position.z : float.NaN;
+                    WriteRow(speed, z);
+                }
+            }
+            else
+            {
+                _belowEnterAccum = 0f;
             }
         }
         else
         {
-            _isStopped = false;
-            _stoppedAccum = 0f;
+            if (speed > stopExitThresholdMps)
+            {
+                _inStoppedState = false;
+                _belowEnterAccum = 0f;
+            }
         }
     }
 
@@ -69,8 +87,8 @@ public class StoppingBehaviourLog : MonoBehaviour
 
     private void ResetState()
     {
-        _isStopped = false;
-        _stoppedAccum = 0f;
+        _inStoppedState = false;
+        _belowEnterAccum = 0f;
     }
 
     private void OpenOrAppendCsv()
@@ -87,7 +105,7 @@ public class StoppingBehaviourLog : MonoBehaviour
             _writer.AutoFlush = true;
 
             if (!exists)
-                _writer.WriteLine("Timestamp,Scene Name,Participant Number,Display Location,AV-Yielding,Speed (m/s)");
+                _writer.WriteLine("Timestamp,Scene Name,Participant Number,Display Location,AV-Yielding,Speed (m/s),HeadZ");
 
             Debug.Log($"StoppingBehaviourLog: Appending to {path}");
         }
@@ -98,15 +116,19 @@ public class StoppingBehaviourLog : MonoBehaviour
         }
     }
 
-    private void WriteRow(float speedMps)
+    private void WriteRow(float speedMps, float headZ)
     {
-        string ts = DateTime.Now.ToString("yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture);
+        string ts = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
 
         int p = ExperimentConfig.Instance ? ExperimentConfig.Instance.ParticipantNumber : -1;
         DisplayLocation loc = ExperimentConfig.Instance ? ExperimentConfig.Instance.Location : DisplayLocation.None;
         bool av = ExperimentConfig.Instance && ExperimentConfig.Instance.AVYielding;
 
-        _writer.WriteLine($"{ts},{trialSceneName},{p},{loc},{(av ? "true" : "false")},{speedMps.ToString("F4", CultureInfo.InvariantCulture)}");
+        _writer.WriteLine(
+            $"{ts},{trialSceneName},{p},{loc},{(av ? "true" : "false")}," +
+            $"{speedMps.ToString("F4", CultureInfo.InvariantCulture)}," +
+            $"{headZ.ToString("F4", CultureInfo.InvariantCulture)}"
+        );
     }
 
     private void OnApplicationQuit() => Close();
